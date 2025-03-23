@@ -1,0 +1,64 @@
+<svg fill="none" viewBox="0 0 600 300" width="500" height="300" xmlns="http://www.w3.org/2000/svg">
+  <foreignObject width="100%" height="100%">
+    <div xmlns="http://www.w3.org/1999/xhtml">
+      <style>
+        .container {
+          position: relative;
+          
+          /*
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          */
+
+          font-family: Comic Sans MS, Comic Sans, cursive;
+
+          width: 100%;
+          height: 200px;
+
+          background-color: #80E8BF;
+          color: black;
+        }
+
+        .title {
+          position: absolute;
+          top: -1.5em;
+          left: 3em;
+        }
+
+        .spoon {
+          color: #6cb52d;
+        }
+
+        .suits {
+          color: blue;
+        }
+
+        h1 {
+          font-size: 3.5em;
+        }
+
+        p {
+          font-size: 1.5em;
+          font-weight: 600;
+        }
+        
+        img {
+          margin-left: 2em;
+          position: absolute;
+          right: 3em;
+          top: 2em;
+        }
+        
+      </style>
+
+      <div class="container">
+        <div class="title">
+          <h1><span class="spoon">Spoon</span> <span class="suits">Suits</span></h1>
+          <p><span class="suits">S</span>imple <span class="suits">Uti</span>l<span class="suits">s</span> for <span class="spoon">Sp</span>ri<span class="spoon">n</span>gb<span class="spoon">oo</span>t</p>
+        </div>
+        <img src="./spoon-suits-icon.jpeg" width="130px" />
+      </div>
+    </div>
+  </foreignObject>
+</svg>
