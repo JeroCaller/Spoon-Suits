@@ -57,7 +57,7 @@
           <h1><span class="spoon">Spoon</span> <span class="suits">Suits</span></h1>
           <p><span class="suits">S</span>imple <span class="suits">Uti</span>l<span class="suits">s</span> for <span class="spoon">Sp</span>ri<span class="spoon">n</span>gb<span class="spoon">oo</span>t</p>
         </div>
-        <img src="./spoon-suits-icon.jpeg" width="130px" />
+        <img src="https://raw.githubusercontent.com/JeroCaller/Spoon-Suits/refs/heads/main/docs-resources/spoon-suits-icon.jpeg" width="130px" />
       </div>
     </div>
   </foreignObject>
