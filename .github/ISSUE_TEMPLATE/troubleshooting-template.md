@@ -2,7 +2,7 @@
 name: Troubleshooting template
 about: Troubleshooting을 위한 이슈 템플릿
 title: "[Troubleshooting]"
-labels: ''
+labels: troubleshooting
 assignees: ''
 
 ---
