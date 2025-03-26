@@ -1,0 +1,56 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.4.4'
+	id 'io.spring.dependency-management' version '1.1.7'
+}
+
+group = 'com.jerocaller.test.spoonsuits-local-test'
+version = '0.0.1-SNAPSHOT'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenLocal()
+	mavenCentral()
+}
+
+dependencies {
+	//implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	developmentOnly 'org.springframework.boot:spring-boot-devtools'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	//testImplementation 'org.springframework.security:spring-security-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+
+	testCompileOnly 'org.projectlombok:lombok'
+	testAnnotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.projectlombok:lombok'
+
+	// Swagger
+	// http://localhost:8080/swagger-ui/index.html
+	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.3'
+
+	implementation 'com.jerocaller.libs.spoonsuits:spoonsuits:0.1.1'
+	// testImplementation 'com.jerocaller.libs.spoonsuits:spoonsuits:0.1.1'
+
+	// 웹 브라우저 환경에서의 자동화 테스트를 위한 프레임워크
+	// https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
+	implementation 'org.seleniumhq.selenium:selenium-java:4.30.0'
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
