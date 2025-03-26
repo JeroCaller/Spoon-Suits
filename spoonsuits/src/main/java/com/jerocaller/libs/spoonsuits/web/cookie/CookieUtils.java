@@ -47,9 +47,10 @@ public class CookieUtils {
         for (String cookieName : cookieNames) {
             for (Cookie cookie : request.getCookies()) {
                 if (cookie.getName().equals(cookieName)) {
-                    cookie.setMaxAge(0);
-                    cookie.setValue(null);
-                    response.addCookie(cookie);
+                    Cookie cookieToDelete = new Cookie(cookieName, null);
+                    cookieConfigurer.configureCookie(cookieToDelete);
+                    cookieToDelete.setMaxAge(0);
+                    response.addCookie(cookieToDelete);
                 }
             }
         }
