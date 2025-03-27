@@ -5,6 +5,12 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
+import org.springframework.util.SerializationUtils;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.util.Base64;
 
 @Component
 @RequiredArgsConstructor
@@ -55,6 +61,32 @@ public class CookieUtils {
             }
         }
 
+    }
+
+    /**
+     * 객체 직렬화 후 쿠키의 값으로 변환
+     *
+     * @param obj
+     * @return
+     */
+    public String serialize(Object obj) {
+        return Base64.getUrlEncoder()
+            .encodeToString(SerializationUtils.serialize(obj));
+    }
+
+    public <T> T deserialize(Cookie cookie, Class<T> cls)
+        throws IOException, ClassNotFoundException
+    {
+
+        byte[] decodedBytes = Base64.getUrlDecoder().decode(cookie.getValue());
+        Object deserializedObj;
+        try (ByteArrayInputStream bais = new ByteArrayInputStream(decodedBytes);
+            ObjectInputStream ois = new ObjectInputStream(bais);)
+        {
+            deserializedObj = ois.readObject();
+        }
+
+        return cls.cast(deserializedObj);
     }
 
 }
