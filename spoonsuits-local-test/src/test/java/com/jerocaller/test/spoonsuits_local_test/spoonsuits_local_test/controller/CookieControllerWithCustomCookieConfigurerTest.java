@@ -19,7 +19,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @WebMvcTest({CookieController.class})
 @Import({CookieUtils.class, TestCookieConfigurer.class, CookieService.class})
 @Slf4j
-class CustomCookieControllerTest {
+class CookieControllerWithCustomCookieConfigurerTest {
 
     @Autowired
     private MockMvc mockMvc;
