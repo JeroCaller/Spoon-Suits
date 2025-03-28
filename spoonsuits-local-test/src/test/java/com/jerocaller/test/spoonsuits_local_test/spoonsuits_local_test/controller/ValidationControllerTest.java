@@ -17,7 +17,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest({UserController.class})
 @Slf4j
-class UserControllerTest {
+class ValidationControllerTest {
 
     @Autowired
     private MockMvc mockMvc;

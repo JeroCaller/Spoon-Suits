@@ -1,4 +1,4 @@
-package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller;
+package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.selenium.test;
 
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.service.CookieService;
 import lombok.extern.slf4j.Slf4j;
