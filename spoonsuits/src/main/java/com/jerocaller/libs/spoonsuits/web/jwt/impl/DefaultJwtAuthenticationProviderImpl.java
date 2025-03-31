@@ -24,8 +24,6 @@ import java.security.Key;
 import java.util.Date;
 import java.util.List;
 
-// TODO : 코드 이상 여부 재확인
-
 @Component
 @RequiredArgsConstructor
 public class DefaultJwtAuthenticationProviderImpl implements
@@ -73,13 +71,13 @@ public class DefaultJwtAuthenticationProviderImpl implements
     public String resolveToken(HttpServletRequest request) {
 
         String token = null;
-        String tokenHeader = request
+        String authHeader = request
             .getHeader(JwtAuthenticationProvider.AUTHORIZATION);
 
-        if (tokenHeader != null &&
-            tokenHeader.startsWith(JwtAuthenticationProvider.BEARER)
+        if (authHeader != null &&
+            authHeader.startsWith(JwtAuthenticationProvider.BEARER)
         ) {
-            token = tokenHeader
+            token = authHeader
                 .substring(JwtAuthenticationProvider.BEARER.length());
         }
         return token;

@@ -59,23 +59,23 @@ public class JwtProperties {
         private final Access access;
         private final Refresh refresh;
 
-    }
+        @Getter
+        @RequiredArgsConstructor
+        public static class Access {
 
-    @Getter
-    @RequiredArgsConstructor
-    public static class Access {
+            private final Duration expiry = Duration.ofDays(1);
+            private final String cookieName = "ACCESS-TOKEN";
 
-        private final Duration expiry = Duration.ofDays(1);
-        private final String cookieName = "ACCESS-TOKEN";
+        }
 
-    }
+        @Getter
+        @RequiredArgsConstructor
+        public static class Refresh {
 
-    @Getter
-    @RequiredArgsConstructor
-    public static class Refresh {
+            private final Duration expiry = Duration.ofDays(7);
+            private final String cookieName = "REFRESH-TOKEN";
 
-        private final Duration expiry = Duration.ofDays(7);
-        private final String cookieName = "REFRESH-TOKEN";
+        }
 
     }
 
