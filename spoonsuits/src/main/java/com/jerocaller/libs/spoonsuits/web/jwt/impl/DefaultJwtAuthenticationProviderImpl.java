@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.util.LinkedMultiValueMap;
@@ -21,6 +22,8 @@ import org.springframework.web.util.WebUtils;
 import javax.crypto.SecretKey;
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -48,10 +51,11 @@ public class DefaultJwtAuthenticationProviderImpl implements
             System.currentTimeMillis() + expirationInMilliSeconds
         );
 
-        MultiValueMap<String, GrantedAuthority> roles
-            = new LinkedMultiValueMap<>();
-        user.getAuthorities().forEach(grantedAuthority ->
-            roles.add("roles", grantedAuthority)
+        MultiValueMap<String, String> roles =
+            new LinkedMultiValueMap<>();
+        roles.put(
+            "roles",
+            getRoleNamesFromGrantedAuthority(user.getAuthorities())
         );
 
         return Jwts.builder()
@@ -98,8 +102,10 @@ public class DefaultJwtAuthenticationProviderImpl implements
     public Authentication getAuthentication(String token) {
 
         String username = extractUsernameFromToken(token);
-        List<GrantedAuthority> roles =
-            (List<GrantedAuthority>) extractClaims(token).get("roles");
+        Collection<SimpleGrantedAuthority> roles =
+            getGrantedAuthoritiesFromRoleNames(
+                (List<String>) extractClaims(token).get("roles")
+            );
 
         return new UsernamePasswordAuthenticationToken(username, null, roles);
     }
@@ -147,6 +153,28 @@ public class DefaultJwtAuthenticationProviderImpl implements
     @Override
     public String extractUsernameFromToken(String token) {
         return extractClaims(token).getSubject();
+    }
+
+    private List<String> getRoleNamesFromGrantedAuthority(
+        Collection<? extends GrantedAuthority> collection
+    ) {
+
+        List<String> roleNames = new ArrayList<>();
+        collection.forEach(grantedAuthority -> {
+            roleNames.add(grantedAuthority.getAuthority());
+        });
+        return roleNames;
+    }
+
+    private Collection<SimpleGrantedAuthority> getGrantedAuthoritiesFromRoleNames(
+        List<String> roleNames
+    ) {
+
+        Collection<SimpleGrantedAuthority> authorities = new ArrayList<>();
+        roleNames.forEach(roleName -> {
+            authorities.add(new SimpleGrantedAuthority(roleName));
+        });
+        return authorities;
     }
 
 }
