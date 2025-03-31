@@ -135,6 +135,7 @@ public class DefaultJwtAuthenticationProviderImpl implements
         return jwtCookie.getValue();
     }
 
+    @Override
     public Claims extractClaims(String token) {
         return Jwts.parser()
             .verifyWith((SecretKey) secretKey)
@@ -143,6 +144,7 @@ public class DefaultJwtAuthenticationProviderImpl implements
             .getPayload();
     }
 
+    @Override
     public String extractUsernameFromToken(String token) {
         return extractClaims(token).getSubject();
     }

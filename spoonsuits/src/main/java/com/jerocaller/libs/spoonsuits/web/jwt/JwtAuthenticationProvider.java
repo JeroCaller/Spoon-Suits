@@ -1,5 +1,6 @@
 package com.jerocaller.libs.spoonsuits.web.jwt;
 
+import io.jsonwebtoken.Claims;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -103,6 +104,14 @@ public interface JwtAuthenticationProvider {
         HttpServletRequest request,
         String cookieName
     ) {
+        return null;
+    }
+
+    default Claims extractClaims(String token) {
+        return null;
+    }
+
+    default String extractUsernameFromToken(String token) {
         return null;
     }
 
