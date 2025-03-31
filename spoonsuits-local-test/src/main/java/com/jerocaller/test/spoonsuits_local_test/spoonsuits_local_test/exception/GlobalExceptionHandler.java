@@ -4,6 +4,7 @@ import com.jerocaller.libs.spoonsuits.web.ValidationUtils;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.RestResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -38,6 +39,28 @@ public class GlobalExceptionHandler {
             .httpStatus(HttpStatus.BAD_REQUEST)
             .message("유효하지 않은 데이터가 감지되었습니다.")
             .data(validationExceptionMessage)
+            .build()
+            .toResponseEntity();
+    }
+
+    @ExceptionHandler(value = BaseCustomException.class)
+    public ResponseEntity<RestResponse> handleCustomException(
+        BaseCustomException e
+    ) {
+        return RestResponse.builder()
+            .httpStatus(e.getHttpStatus())
+            .message(e.getMessage())
+            .build()
+            .toResponseEntity();
+    }
+
+    @ExceptionHandler(value = UsernameNotFoundException.class)
+    public ResponseEntity<RestResponse> handleUsernameNotFoundException(
+        UsernameNotFoundException e
+    ) {
+        return RestResponse.builder()
+            .httpStatus(HttpStatus.NOT_FOUND)
+            .message(e.getMessage())
             .build()
             .toResponseEntity();
     }
