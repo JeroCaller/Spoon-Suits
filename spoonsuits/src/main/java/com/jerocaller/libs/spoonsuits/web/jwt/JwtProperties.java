@@ -1,9 +1,8 @@
 package com.jerocaller.libs.spoonsuits.web.jwt;
 
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.time.Duration;
 
@@ -43,37 +42,39 @@ import java.time.Duration;
  * </a>
  */
 @Getter
-@Component
-@RequiredArgsConstructor
-@ConfigurationProperties(prefix = "jwt")
+@Setter
+@ToString
 public class JwtProperties {
 
-    private final String issuer;
-    private final String secretKey;
-    private final Token token;
+    private String issuer;
+    private String secretKey;
+    private Token token;
 
     @Getter
-    @RequiredArgsConstructor
+    @Setter
+    @ToString
     public static class Token {
 
-        private final Access access;
-        private final Refresh refresh;
+        private Access access;
+        private Refresh refresh;
 
         @Getter
-        @RequiredArgsConstructor
+        @Setter
+        @ToString
         public static class Access {
 
-            private final Duration expiry = Duration.ofDays(1);
-            private final String cookieName = "ACCESS-TOKEN";
+            private Duration expiry = Duration.ofDays(1);
+            private String cookieName = "ACCESS-TOKEN";
 
         }
 
         @Getter
-        @RequiredArgsConstructor
+        @Setter
+        @ToString
         public static class Refresh {
 
-            private final Duration expiry = Duration.ofDays(7);
-            private final String cookieName = "REFRESH-TOKEN";
+            private Duration expiry = Duration.ofDays(7);
+            private String cookieName = "REFRESH-TOKEN";
 
         }
 
