@@ -1,19 +1,18 @@
 package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.config;
 
 import com.jerocaller.libs.spoonsuits.web.jwt.DefaultJwtAuthenticationFilter;
-import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-
-import java.util.Arrays;
 
 @Configuration
 @EnableWebSecurity
@@ -61,23 +60,23 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService mockUsers() {
 
-        Member memberOne = Member.builder()
+        UserDetails userOne = User.builder()
             .username("Kimquel")
             .password("kimquel1234")
-            .roles(Arrays.asList("USER"))
+            .roles("USER")
             .build();
-        Member memberTwo = Member.builder()
+        UserDetails userTwo = User.builder()
             .username("Jeongdb")
             .password("jeongdb1122")
-            .roles(Arrays.asList("USER", "STAFF"))
+            .roles("USER", "STAFF")
             .build();
-        Member memberThree = Member.builder()
+        UserDetails userThree = User.builder()
             .username("Javas")
             .password("javas2233")
-            .roles(Arrays.asList("USER", "STAFF", "ADMIN"))
+            .roles("USER", "STAFF", "ADMIN")
             .build();
 
-        return new InMemoryUserDetailsManager(memberOne, memberTwo, memberThree);
+        return new InMemoryUserDetailsManager(userOne, userTwo, userThree);
     }
 
 }

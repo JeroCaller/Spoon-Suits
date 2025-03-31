@@ -3,11 +3,11 @@ package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.service;
 import com.jerocaller.libs.spoonsuits.web.jwt.JwtAuthenticationProvider;
 import com.jerocaller.libs.spoonsuits.web.jwt.JwtProperties;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.TokenDto;
-import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.entity.Member;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.exception.classes.TokenNotFoundInCookieException;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.exception.classes.TokenNotValidException;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +19,7 @@ public class TokenService {
     private final JwtProperties jwtProperties;
     private final UserDetailsService userDetailsService;
 
-    public TokenDto getNewTokens(Member member) {
+    public TokenDto getNewTokens(UserDetails member) {
 
         String accessToken = jwtAuthenticationProvider
             .createAccessToken(member);
@@ -46,7 +46,7 @@ public class TokenService {
             throw new TokenNotValidException();
         }
 
-        Member member = (Member) userDetailsService
+        UserDetails member = userDetailsService
             .loadUserByUsername(jwtAuthenticationProvider
                 .extractUsernameFromToken(refreshToken)
             );

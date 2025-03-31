@@ -1,12 +1,13 @@
 package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto;
 
-import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.List;
+import java.util.Collection;
 
 @Getter
 @NoArgsConstructor
@@ -16,17 +17,17 @@ public class MemberWithTokenResponse {
 
     private String username;
     private String password;
-    private List<String> roles;
+    private Collection<? extends GrantedAuthority> roles;
     private TokenDto tokenDto;
 
     public static MemberWithTokenResponse toDto(
-        Member member,
+        UserDetails member,
         TokenDto tokenDto
     ) {
         return MemberWithTokenResponse.builder()
             .username(member.getUsername())
             .password(member.getPassword())
-            .roles(member.getRoles())
+            .roles(member.getAuthorities())
             .tokenDto(tokenDto)
             .build();
     }
