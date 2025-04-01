@@ -1,6 +1,7 @@
 package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.config.TestSecurityDisableConfig;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.SiteUserRegisterDto;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
@@ -16,6 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest({UserController.class})
+@ContextConfiguration(classes = {TestSecurityDisableConfig.class})
 @Slf4j
 class ValidationControllerTest {
 
