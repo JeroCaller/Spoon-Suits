@@ -34,7 +34,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @Slf4j
-class AuthControllerTest {
+class JwtAuthControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -55,7 +55,6 @@ class AuthControllerTest {
         log.info(this.getClass().getName());
     }
 
-    // TODO : 테스트 코드 계속 작성.
     @Test
     @DisplayName("""
        POST /test/auth로 로그인 요청 성공 시 Access & Refresh Token을 응답하는지 테스트.
@@ -97,17 +96,34 @@ class AuthControllerTest {
             mvcResult.getResponse().getContentAsString(),
             "$.data.tokenDto.accessToken"
         );
-        Claims claimsFromAccessToken = jwtProvider.extractClaims(accessToken);
-        Map<String, Object> jwtAccessHeader = getJwtHeader(accessToken);
-        List<String> roles = (List<String>) claimsFromAccessToken.get("roles");
-        log.info(claimsFromAccessToken.keySet().toString());
-        log.info(jwtAccessHeader.toString());
+        tokenTest(accessToken, mockMemberLogin);
+
+        // Refresh Token 검증
+        String refreshToken = JsonPath.read(
+            mvcResult.getResponse().getContentAsString(),
+            "$.data.tokenDto.refreshToken"
+        );
+        tokenTest(refreshToken, mockMemberLogin);
+
+        assertThat(accessToken).isNotEqualTo(refreshToken);
+
+    }
+
+    private void tokenTest(String token, MemberLogin mockMemberLogin) {
+
+        Claims claimsFromToken = jwtProvider.extractClaims(token);
+        Map<String, Object> jwtHeader = getJwtHeader(token);
+        List<String> roles = (List<String>) claimsFromToken.get("roles");
+
+        log.info(claimsFromToken.keySet().toString());
+        log.info(jwtHeader.toString());
         log.info(roles.toString());
-        assertThat(claimsFromAccessToken.getIssuer())
+
+        assertThat(claimsFromToken.getIssuer())
             .isEqualTo(jwtProperties.getIssuer());
-        assertThat(jwtAccessHeader.get("typ"))
+        assertThat(jwtHeader.get("typ"))
             .isEqualTo("JWT");
-        assertThat(claimsFromAccessToken.getSubject())
+        assertThat(claimsFromToken.getSubject())
             .isEqualTo(mockMemberLogin.getUsername());
         assertThat(roles.getFirst().startsWith("ROLE_")).isTrue();
 

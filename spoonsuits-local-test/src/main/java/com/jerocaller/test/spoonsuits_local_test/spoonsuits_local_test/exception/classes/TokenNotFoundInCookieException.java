@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 public class TokenNotFoundInCookieException extends BaseCustomException {
 
     public TokenNotFoundInCookieException() {
-        super("토큰을 쿠키에서 찾자 못했습니다.", HttpStatus.NOT_FOUND);
+        super("토큰을 쿠키에서 찾지 못했습니다.", HttpStatus.NOT_FOUND);
     }
 
     public TokenNotFoundInCookieException(String message) {
