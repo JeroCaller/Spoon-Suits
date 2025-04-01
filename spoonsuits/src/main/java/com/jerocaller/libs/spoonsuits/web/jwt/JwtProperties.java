@@ -3,6 +3,8 @@ package com.jerocaller.libs.spoonsuits.web.jwt;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.Component;
 
 import java.time.Duration;
 
@@ -44,6 +46,8 @@ import java.time.Duration;
 @Getter
 @Setter
 @ToString
+@Component
+@ConfigurationProperties(prefix = "jwt")
 public class JwtProperties {
 
     private String issuer;
