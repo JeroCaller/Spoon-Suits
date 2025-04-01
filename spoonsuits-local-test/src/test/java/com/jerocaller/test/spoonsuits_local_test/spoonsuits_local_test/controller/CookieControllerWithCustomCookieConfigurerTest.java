@@ -2,6 +2,7 @@ package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controll
 
 import com.jerocaller.libs.spoonsuits.web.cookie.CookieUtils;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.config.TestCookieConfigurer;
+import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.config.TestSecurityDisableConfig;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.service.CookieService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
@@ -9,6 +10,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -18,6 +20,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @WebMvcTest({CookieController.class})
 @Import({CookieUtils.class, TestCookieConfigurer.class, CookieService.class})
+@ContextConfiguration(classes = {TestSecurityDisableConfig.class})
 @Slf4j
 class CookieControllerWithCustomCookieConfigurerTest {
 

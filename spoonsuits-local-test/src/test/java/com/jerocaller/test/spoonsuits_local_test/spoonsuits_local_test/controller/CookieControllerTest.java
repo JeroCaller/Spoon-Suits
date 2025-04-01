@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jerocaller.libs.spoonsuits.web.cookie.CookieRequest;
 import com.jerocaller.libs.spoonsuits.web.cookie.CookieUtils;
 import com.jerocaller.libs.spoonsuits.web.cookie.impl.DefaultCookieConfigurerImpl;
+import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.config.TestSecurityDisableConfig;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.SiteUser;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.service.CookieService;
 import jakarta.servlet.http.Cookie;
@@ -14,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -25,7 +27,12 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @WebMvcTest(CookieController.class)
-@Import({CookieUtils.class, DefaultCookieConfigurerImpl.class, CookieService.class})
+@Import({
+    CookieUtils.class,
+    DefaultCookieConfigurerImpl.class,
+    CookieService.class
+})
+@ContextConfiguration(classes = {TestSecurityDisableConfig.class})
 @Slf4j
 class CookieControllerTest {
 

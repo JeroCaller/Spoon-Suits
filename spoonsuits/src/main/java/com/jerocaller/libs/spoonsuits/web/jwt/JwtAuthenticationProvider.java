@@ -6,7 +6,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 
 // TODO : JWT 관련 기능 모두 구현 후 javadoc 작성 및 보강
-// TODO : JWT 관련 기능 모두 구현 후 테스트하기
 
 public interface JwtAuthenticationProvider {
 
