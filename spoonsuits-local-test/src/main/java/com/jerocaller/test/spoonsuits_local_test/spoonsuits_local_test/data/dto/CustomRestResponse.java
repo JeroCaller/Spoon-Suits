@@ -23,7 +23,7 @@ public class CustomRestResponse {
     private HttpStatus httpStatus;
     private String message;
     private Object data;
-    private List<FileEntity> failedFiles;
+    private List<FileEntity> failedFiles; // null 또는 빈 값일 시 필터 대상.
 
     public ResponseEntity<Object> toResponseEntity() {
 

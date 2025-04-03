@@ -4,7 +4,6 @@ import com.fasterxml.jackson.databind.ser.FilterProvider;
 import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
 import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
 import com.jerocaller.libs.spoonsuits.web.rest.json.dto.JsonFilterOfEmptyFieldsArgs;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.converter.json.MappingJacksonValue;
 
 import java.lang.reflect.Field;
@@ -12,9 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-// TODO : 테스트 코드 작성 및 테스트 진행.
 // TODO : 테스트 완료 후 javadoc 작성
-@Slf4j // TODO : 테스트 완료 후 로깅 기능 삭제하기
 public class JsonFilterOfEmptyFields {
     
     public MappingJacksonValue getJsonWithEmptyFieldsFilteredOut(
@@ -43,12 +40,6 @@ public class JsonFilterOfEmptyFields {
             Object fieldValue; // field에 할당된 값
 
             try {
-                // TODO : 테스트 완료 후 로깅 기능 삭제하기
-                log.info(
-                    "Rest response Class Type: {}",
-                    argsDto.getPojoForRestResponse().getClass()
-                        .getName()
-                );
                 field = argsDto.getPojoForRestResponse()
                     .getClass()
                     .getDeclaredField(fieldName);
