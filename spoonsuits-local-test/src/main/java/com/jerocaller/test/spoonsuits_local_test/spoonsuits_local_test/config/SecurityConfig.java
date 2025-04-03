@@ -25,7 +25,8 @@ public class SecurityConfig {
         "/test/auth/**",
         "/test/cookie/**",
         "/test/users/**",
-        "/test/tokens/**"
+        "/test/tokens/**",
+        "/test/files/**"
     };
 
     @Bean
