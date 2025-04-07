@@ -1,6 +1,14 @@
 spring:
   application:
     name: spoonsuits-local-test
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://127.0.0.1:3308/test_festival
+    username: root
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MariaDBDialect
 
 jwt:
   issuer: kimquel@good
