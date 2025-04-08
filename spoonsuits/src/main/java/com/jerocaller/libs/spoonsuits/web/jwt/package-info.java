@@ -3,7 +3,7 @@
  *     JWT 기반 인증을 구현하기 위한 도구 제공 패키지.
  * </p>
  * <p>
- *     JWT 기반 인증 구현을 위한 Jwt Authentication Provider & Filter 제공.
+ *     JWT 기반 인증 구현을 위한 Jwt Authentication Provider, Filter 제공.
  * </p>
  * <p>
  *     여기에선 <a href="https://github.com/jwtk/jjwt">jjwt</a> 의존성을 사용하며,
