@@ -11,7 +11,7 @@ import java.time.Duration;
 /**
  * <p>
  *     application.properties(또는 .yml) 파일로부터
- *     JWT 관련 설정값들을 가져오는 클래스.
+ *     JWT 관련 설정값들을 가져오는 Spring bean.
  * </p>
  *
  * <p>application.yml 설정 예시</p>
