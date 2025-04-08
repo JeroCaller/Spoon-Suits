@@ -1,0 +1,9 @@
+com.jerocaller.libs.spoonsuits.config
+com.jerocaller.libs.spoonsuits.web.cookie
+com.jerocaller.libs.spoonsuits.web.cookie.impl
+com.jerocaller.libs.spoonsuits.web.jpa
+com.jerocaller.libs.spoonsuits.web.jwt
+com.jerocaller.libs.spoonsuits.web.jwt.impl
+com.jerocaller.libs.spoonsuits.web.rest.json
+com.jerocaller.libs.spoonsuits.web.rest.json.dto
+com.jerocaller.libs.spoonsuits.web.validation
