@@ -15,12 +15,11 @@ import org.springframework.stereotype.Component;
  * <p>
  *     쿠키는 다음과 같이 설정되어 있음.
  * </p>
- * <pre>
- * <code>cookie.setHttpOnly(true);
+ * <pre><code>
+ * cookie.setHttpOnly(true);
  * cookie.setPath("/");
  * cookie.setSecure(false);
- * </code>
- * </pre>
+ * </code></pre>
  */
 @Component
 @Order(Ordered.LOWEST_PRECEDENCE)
