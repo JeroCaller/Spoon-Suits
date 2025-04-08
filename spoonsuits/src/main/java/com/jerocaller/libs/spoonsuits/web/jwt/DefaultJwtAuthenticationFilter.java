@@ -62,6 +62,7 @@ import java.io.IOException;
  *     }
  *
  *     // ...
+ * }
  * }</pre>
  */
 @Component

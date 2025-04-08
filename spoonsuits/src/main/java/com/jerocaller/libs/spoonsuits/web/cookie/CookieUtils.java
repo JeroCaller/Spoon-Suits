@@ -21,14 +21,15 @@ import java.util.Base64;
  * </p>
  *
  * <p>
- * 만약 쿠키 설정 커스텀을 하고자 한다면
+ *     만약 쿠키 설정 커스텀을 하고자 한다면
+ * </p>
  * <ol>
  *     <li>CookieConfigurer를 implements하며, </li>
  *     <li>해당 구현체에 <code>@Primary</code> 및
  *          <code>@Component</code>어노테이션을 부여한다.
  *     </li>
  * </ol>
- * </p>
+ *
  * <p>
  *     쿠키 설정 커스텀 예시)
  * </p>
