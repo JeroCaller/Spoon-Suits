@@ -10,6 +10,7 @@
  *     사용을 위해선 Gradle(Groovy)에서 다음의 의존성 추가 필요.
  * </p>
  * <pre><code>
+ * // jjwt
  * implementation 'io.jsonwebtoken:jjwt-api:0.12.6'
  * runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.6'
  * runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.6'

@@ -24,19 +24,19 @@ import jakarta.servlet.http.Cookie;
  * <p>
  *     쿠키 설정 커스텀 예시)
  * </p>
- * <pre>
- * <code>@Primary
- * <code>@Component</code>
+ * <pre>{@code
+ * @Primary
+ * @Component
  * public class MyCookieConfigurer implements CookieConfigurer {
  *
- *     <code>@Override</code>
+ *     @Override
  *     public void configureCookie(Cookie cookie) {
  *         cookie.setHttpOnly(true);
  *         cookie.setPath("/");
  *         cookie.setSecure(True);
  *     }
  * }
- * </code>
+ * }
  * </pre>
  *
  * @see CookieUtils

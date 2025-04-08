@@ -64,18 +64,18 @@ public class DefaultJwtAuthenticationProviderImpl implements
      * <p>JWT 토큰 생성 메서드</p>
      * <p>JWT 생성 구조)</p>
      * <pre><code>
-     *     return Jwts.builder()
-     *             .header()
-     *             .type("JWT")
-     *             .and()
-     *             .subject(user.getUsername())
-     *             .claims(roles)
-     *             .issuedAt(new Date())
-     *             .issuer(jwtProperties.getIssuer())
+     * return Jwts.builder()
+     *     .header()
+     *     .type("JWT")
+     *     .and()
+     *     .subject(user.getUsername())
+     *     .claims(roles)
+     *     .issuedAt(new Date())
+     *     .issuer(jwtProperties.getIssuer())
      *  // expiration = new java.util.Date(System.currentTimeMillis() + expirationInMilliSeconds)
-     *             .expiration(expiration)
-     *             .signWith(secretKey)
-     *             .compact();
+     *     .expiration(expiration)
+     *     .signWith(secretKey)
+     *     .compact();
      * </code></pre>
      * <ul>
      *     <li>
@@ -130,7 +130,7 @@ public class DefaultJwtAuthenticationProviderImpl implements
      * </p>
      *
      * @param request
-     * @return
+     * @return JWT 토큰
      */
     @Override
     public String resolveToken(HttpServletRequest request) {
@@ -277,7 +277,7 @@ public class DefaultJwtAuthenticationProviderImpl implements
      * <p>JWT의 subject에 username이 있는 경우 이를 통해 username을 추출하는 메서드.</p>
      *
      * @param token username을 추출하고자 하는 JWT 토큰
-     * @return
+     * @return username
      */
     @Override
     public String extractUsernameFromToken(String token) {

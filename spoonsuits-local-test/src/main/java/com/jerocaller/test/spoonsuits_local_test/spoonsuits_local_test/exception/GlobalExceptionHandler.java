@@ -1,6 +1,6 @@
 package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.exception;
 
-import com.jerocaller.libs.spoonsuits.web.ValidationUtils;
+import com.jerocaller.libs.spoonsuits.web.validation.ValidationUtils;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.RestResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

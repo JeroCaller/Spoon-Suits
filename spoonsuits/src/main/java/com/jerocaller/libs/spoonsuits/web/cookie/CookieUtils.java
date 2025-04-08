@@ -13,7 +13,7 @@ import java.io.ObjectInputStream;
 import java.util.Base64;
 
 /**
- * <p>쿠키 유틸리티 클래스.</p>
+ * <p>쿠키 유틸리티 Spring Bean</p>
  *
  * <p>
  * 사용자의 쿠키 설정 커스텀을 가능하게 하기 위해 별도의 CookieConfigurer를 의존성 주입함.
@@ -32,19 +32,19 @@ import java.util.Base64;
  * <p>
  *     쿠키 설정 커스텀 예시)
  * </p>
- * <pre>
- * <code>@Primary
- * <code>@Component</code>
+ * <pre>{@code
+ * @Primary
+ * @Component
  * public class MyCookieConfigurer implements CookieConfigurer {
  *
- *     <code>@Override</code>
+ *     @Override
  *     public void configureCookie(Cookie cookie) {
  *         cookie.setHttpOnly(true);
  *         cookie.setPath("/");
  *         cookie.setSecure(True);
  *     }
  * }
- * </code>
+ * }
  * </pre>
  *
  * <p>

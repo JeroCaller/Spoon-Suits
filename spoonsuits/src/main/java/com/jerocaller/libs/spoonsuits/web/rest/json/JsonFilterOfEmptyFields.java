@@ -106,7 +106,7 @@ import java.util.Map;
  * <b>Note)</b>
  * <ul>
  *     <li>
- *         이 클래스는 기본적으로 Spring Bean에 등록하지 않았으므로 상황에 따라
+ *         이 클래스는 기본적으로 Spring Bean으로 등록하지 않았으므로 상황에 따라
  *         new 키워드를 이용해 객체를 직접 생성하여 사용 또는
  *         <code>@Configuration</code> 설정 클래스에 <code>@Bean</code>을 이용하여
  *         스프링 빈으로 등록하고 의존성 주입하여 사용해도 됨.

@@ -1,4 +1,4 @@
-package com.jerocaller.libs.spoonsuits.web;
+package com.jerocaller.libs.spoonsuits.web.validation;
 
 import org.springframework.web.bind.MethodArgumentNotValidException;
 
