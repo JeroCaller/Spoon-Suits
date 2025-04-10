@@ -130,7 +130,7 @@ class CookieControllerTest {
     }
 
     @Test
-    @DisplayName("GET /test/register/cookie/users/my: 쿠키 직렬화 테스트")
+    @DisplayName("GET /test/cookie/register/users/my: 쿠키 직렬화 테스트")
     void registerUserTest() throws Exception {
 
         final String cookieName = "USER";
