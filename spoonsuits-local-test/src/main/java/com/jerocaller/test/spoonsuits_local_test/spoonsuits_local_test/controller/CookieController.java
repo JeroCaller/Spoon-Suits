@@ -2,8 +2,8 @@ package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controll
 
 import com.jerocaller.libs.spoonsuits.web.cookie.CookieRequest;
 import com.jerocaller.libs.spoonsuits.web.cookie.CookieUtils;
-import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.SiteUser;
-import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.SiteUserResponse;
+import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.siteuser.SiteUser;
+import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.siteuser.SiteUserResponse;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.service.CookieService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;

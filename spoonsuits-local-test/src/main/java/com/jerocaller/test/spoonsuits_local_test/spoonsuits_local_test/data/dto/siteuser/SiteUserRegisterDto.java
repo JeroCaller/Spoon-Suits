@@ -1,4 +1,4 @@
-package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto;
+package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.siteuser;
 
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.validation.annotation.Phone;
 import jakarta.validation.constraints.Email;

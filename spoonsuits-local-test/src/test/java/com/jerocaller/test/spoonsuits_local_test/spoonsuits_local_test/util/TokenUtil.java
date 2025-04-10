@@ -2,7 +2,7 @@ package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.util;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
-import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.MemberLogin;
+import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.member.MemberLogin;
 import jakarta.servlet.http.Cookie;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;

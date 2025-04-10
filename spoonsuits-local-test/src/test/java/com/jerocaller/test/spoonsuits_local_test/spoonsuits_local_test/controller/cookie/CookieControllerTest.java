@@ -1,11 +1,12 @@
-package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller;
+package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller.cookie;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jerocaller.libs.spoonsuits.web.cookie.CookieRequest;
 import com.jerocaller.libs.spoonsuits.web.cookie.CookieUtils;
 import com.jerocaller.libs.spoonsuits.web.cookie.impl.DefaultCookieConfigurerImpl;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.config.TestSecurityDisableConfig;
-import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.SiteUser;
+import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller.CookieController;
+import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.siteuser.SiteUser;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.service.CookieService;
 import jakarta.servlet.http.Cookie;
 import lombok.extern.slf4j.Slf4j;
@@ -130,7 +131,7 @@ class CookieControllerTest {
     }
 
     @Test
-    @DisplayName("GET /test/register/cookie/users/my: 쿠키 직렬화 테스트")
+    @DisplayName("GET /test/cookie/register/users/my: 쿠키 직렬화 테스트")
     void registerUserTest() throws Exception {
 
         final String cookieName = "USER";

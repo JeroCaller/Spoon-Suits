@@ -1,9 +1,9 @@
-package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller;
+package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller.jwt;
 
 import com.jayway.jsonpath.JsonPath;
 import com.jerocaller.libs.spoonsuits.web.jwt.JwtAuthenticationProvider;
 import com.jerocaller.libs.spoonsuits.web.jwt.JwtProperties;
-import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.MemberLogin;
+import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.member.MemberLogin;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.exception.classes.TokenNotFoundInCookieException;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.exception.classes.TokenNotValidException;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.util.TokenUtil;
