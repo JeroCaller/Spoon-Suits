@@ -1,7 +1,7 @@
 package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller;
 
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.RestResponse;
-import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.SiteUserRegisterDto;
+import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.siteuser.SiteUserRegisterDto;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

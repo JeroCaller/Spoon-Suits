@@ -2,7 +2,7 @@ package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controll
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
-import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.MemberLogin;
+import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.member.MemberLogin;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.util.TokenUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;

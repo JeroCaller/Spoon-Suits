@@ -3,7 +3,7 @@ package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controll
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.config.TestSecurityDisableConfig;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller.UserController;
-import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.SiteUserRegisterDto;
+import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.siteuser.SiteUserRegisterDto;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

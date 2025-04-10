@@ -1,6 +1,6 @@
 package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller;
 
-import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.MemberWithTokenResponse;
+import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.member.MemberWithTokenResponse;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.RestResponse;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.entity.Book;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.service.AuthService;

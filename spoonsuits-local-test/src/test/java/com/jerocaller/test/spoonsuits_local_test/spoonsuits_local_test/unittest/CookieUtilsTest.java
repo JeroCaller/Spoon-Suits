@@ -2,7 +2,7 @@ package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.unittest
 
 import com.jerocaller.libs.spoonsuits.web.cookie.CookieUtils;
 import com.jerocaller.libs.spoonsuits.web.cookie.impl.DefaultCookieConfigurerImpl;
-import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.SiteUser;
+import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.siteuser.SiteUser;
 import jakarta.servlet.http.Cookie;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
