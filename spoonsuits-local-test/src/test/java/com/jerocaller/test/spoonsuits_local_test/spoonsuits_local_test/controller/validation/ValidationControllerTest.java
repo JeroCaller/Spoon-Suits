@@ -1,7 +1,8 @@
-package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller;
+package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller.validation;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.config.TestSecurityDisableConfig;
+import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller.UserController;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.SiteUserRegisterDto;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;

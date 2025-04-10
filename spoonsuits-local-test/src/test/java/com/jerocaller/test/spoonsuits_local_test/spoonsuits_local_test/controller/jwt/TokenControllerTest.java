@@ -1,4 +1,4 @@
-package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller;
+package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller.jwt;
 
 import com.jayway.jsonpath.JsonPath;
 import com.jerocaller.libs.spoonsuits.web.jwt.JwtAuthenticationProvider;

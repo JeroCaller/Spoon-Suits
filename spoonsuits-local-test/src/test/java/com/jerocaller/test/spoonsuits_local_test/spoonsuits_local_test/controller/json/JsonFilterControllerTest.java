@@ -1,6 +1,7 @@
-package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller;
+package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller.json;
 
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.config.TestSecurityDisableConfig;
+import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller.FileController;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.service.FileService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;

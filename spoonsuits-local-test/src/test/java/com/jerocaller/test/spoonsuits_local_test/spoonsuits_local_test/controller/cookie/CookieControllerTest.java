@@ -1,10 +1,11 @@
-package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller;
+package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller.cookie;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jerocaller.libs.spoonsuits.web.cookie.CookieRequest;
 import com.jerocaller.libs.spoonsuits.web.cookie.CookieUtils;
 import com.jerocaller.libs.spoonsuits.web.cookie.impl.DefaultCookieConfigurerImpl;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.config.TestSecurityDisableConfig;
+import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller.CookieController;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.data.dto.SiteUser;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.service.CookieService;
 import jakarta.servlet.http.Cookie;

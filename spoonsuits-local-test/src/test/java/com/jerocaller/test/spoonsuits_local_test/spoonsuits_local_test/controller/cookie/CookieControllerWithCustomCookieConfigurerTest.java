@@ -1,8 +1,9 @@
-package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller;
+package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller.cookie;
 
 import com.jerocaller.libs.spoonsuits.web.cookie.CookieUtils;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.config.TestCookieConfigurer;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.config.TestSecurityDisableConfig;
+import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller.CookieController;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.service.CookieService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.DisplayName;
