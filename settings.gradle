@@ -1,0 +1,2 @@
+// 라이브러리 폴더만 배포하기 위한 설정.
+include 'spoonsuits'
