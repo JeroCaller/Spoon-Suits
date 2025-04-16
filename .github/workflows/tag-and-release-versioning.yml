@@ -1,0 +1,32 @@
+name: Release versioning
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    name: Automation of Github release
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: write
+      id-token: write
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Bump version and push tag
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Create a GitHub release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.tag_version.outputs.new_tag }}
+          name: Release ${{ steps.tag_version.outputs.new_tag }}
+          body: ${{ steps.tag_version.outputs.changelog }}
+      - name: Log created release info
+        run: |
+          echo "Release Type : ${{ steps.tag_version.outputs.release_type }}"
+          echo "Previous Tag : ${{ steps.tag_version.outputs.previous_tag }}"
+          echo "New Tag: ${{ steps.tag_version.outputs.new_tag }}"
