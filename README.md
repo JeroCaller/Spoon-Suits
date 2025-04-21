@@ -70,8 +70,7 @@ dependencies {
 ## 정보 - Info
 각 기능의 자세한 사용 방법은 다음의 API Reference를 참고바랍니다.   
 * API Reference: [최신 버전 Javadoc](https://jitpack.io/com/github/JeroCaller/Spoon-Suits/latest/javadoc/)
-* 이전 버전의 API Reference를 원하신다면 브라우저 주소 창에 `https://jitpack.
-io/com/github/JeroCaller/Spoon-Suits/<원하는 버전>/javadoc/` 형태로 입력하면 됩니다. 
+* 이전 버전의 API Reference를 원하신다면 브라우저 주소 창에 `https://jitpack.io/com/github/JeroCaller/Spoon-Suits/<원하는 버전>/javadoc/` 형태로 입력하면 됩니다. 
 * 버전 목록은 ["Spoon Suits" Github repository](https://github.com/JeroCaller/Spoon-Suits) 의 화면 우측에 있는 "Releases" 목록을 참고하면 됩니다.
   * ["Spoon Suits" Github Releases](https://github.com/JeroCaller/Spoon-Suits/releases)
 
