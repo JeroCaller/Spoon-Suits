@@ -18,6 +18,7 @@ jobs:
         uses: mathieudutour/github-tag-action@v6.2
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          custom_release_rules: 'BREAKING CHANGE:major,feat:minor,fix:patch,docs:patch,refactor:patch,test:patch,style:patch'
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
