@@ -203,3 +203,9 @@ dependencies {
 | <img src="https://img.shields.io/badge/jitpack-000000?style=for-the-badge&logo=jitpack&logoColor=white"> | 라이브러리 온라인 자동 배포. Javadoc 문서 제공 |
 | <img src="https://img.shields.io/badge/github actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white"> | Github Tag & Release 및 버전 번호 부여 자동화 |
 
+## 개발 일지 - Development log
+
+Spoon Suits 라이브러리를 개발하며 작성한 글입니다. 
+
+[[Roadmap][Personal Project] Spoon Suits 관련 글 로드맵](https://jerocaller.github.io/roadmap/spoon-suits-personal-project-roadmap/)
+
