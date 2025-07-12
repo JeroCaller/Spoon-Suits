@@ -190,7 +190,6 @@ Spoon Suits Javadoc page (v1.0.5)
 
 | Development Environment |
 |:---:|
-| <img src="https://img.shields.io/badge/os-%23121011?style=for-the-badge">![Windows](https://img.shields.io/badge/Windows-0078D6?style=for-the-badge&logo=windows&logoColor=white)<img src="https://img.shields.io/badge/10-%23121011?style=for-the-badge"> |
 | <img src="https://img.shields.io/badge/ide-%23121011?style=for-the-badge"><img src="https://img.shields.io/badge/intellij-000000?style=for-the-badge&logo=intellijidea"> |
   </td>
   <td>
