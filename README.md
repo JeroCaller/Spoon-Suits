@@ -73,12 +73,14 @@ dependencies {
 Spoon Suits Javadoc page (v1.0.5)
 
 각 기능의 자세한 사용 방법은 다음의 API Reference를 참고바랍니다.   
-- ⚠️ 현재 jitpack 측에서 javadoc 생성에 이슈가 있음을 확인하였습니다. 현재 최신버전의 javadoc 페이지에 이상이 있는 관계로, 임시로 v1.0.5 버전의 javadoc을 남깁니다. 해당 버전은 최신 버전과 코드 상 차이가 없으므로 v1.0.5 버전의 javadoc 문서를 보셔도 문제 없습니다. 이슈가 해결되는 대로 다시 최신 버전의 javadoc URL을 업데이트하겠습니다. 
-  - v1.0.5 javadoc : [https://javadoc.jitpack.io/com/github/JeroCaller/Spoon-Suits/v1.0.5/javadoc/index.html](https://javadoc.jitpack.io/com/github/JeroCaller/Spoon-Suits/v1.0.5/javadoc/index.html)
-* ~~API Reference: [최신 버전 Javadoc](https://jitpack.io/com/github/JeroCaller/Spoon-Suits/latest/javadoc/)~~
-* ~~이전 버전의 API Reference를 원하신다면 브라우저 주소 창에 `https://jitpack.io/com/github/JeroCaller/Spoon-Suits/<원하는 버전>/javadoc/` 형태로 입력하면 됩니다.~~
-* 버전 목록은 ["Spoon Suits" Github repository](https://github.com/JeroCaller/Spoon-Suits) 의 화면 우측에 있는 "Releases" 목록을 참고하면 됩니다.
-  * ["Spoon Suits" Github Releases](https://github.com/JeroCaller/Spoon-Suits/releases)
+
+- API Reference: [최신 버전 Javadoc](https://jerocaller.github.io/Spoon-Suits/)
+
+- ⚠️ 현재 Jitpack 측에서 javadoc 생성에 이슈가 있음을 확인하였습니다. 현재 여러 버전에서의 javadoc 페이지에 이상이 있는 관계로, 임시로 최신 버전의 javadoc 페이지만을 배포합니다. 이슈가 해결되는대로 모든 버전의 javadoc 페이지를 제공하도록 하겠습니다. 
+
+- ~~이전 버전의 API Reference를 원하신다면 브라우저 주소 창에 `https://jitpack.io/com/github/JeroCaller/Spoon-Suits/<원하는 버전>/javadoc/` 형태로 입력하면 됩니다.~~
+- 버전 목록은 ["Spoon Suits" Github repository](https://github.com/JeroCaller/Spoon-Suits) 의 화면 우측에 있는 "Releases" 목록을 참고하면 됩니다.
+  - ["Spoon Suits" Github Releases](https://github.com/JeroCaller/Spoon-Suits/releases)
 
 그 외 정보들은 [Spoon Suits Wiki](https://github.com/JeroCaller/Spoon-Suits/wiki)를 참고 바랍니다. 
 
