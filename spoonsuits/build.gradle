@@ -77,3 +77,40 @@ dependencies {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+// javadoc 자동화 관련
+// ext 블록은 build.gradle 상단 또는 공통 설정에 정의할 수 있음
+ext {
+	// repoVersionFromCi: GitHub Actions에서 -P 옵션으로 전달받을 프로젝트 속성
+	// 만약 속성이 없으면 'UNKNOWN_VERSION'으로 기본값 설정
+	repoVersion = project.hasProperty('repoVersionFromCi') ? project.repoVersionFromCi : 'UNKNOWN_VERSION'
+}
+
+// Javadoc overview.html 파일을 복사하고 토큰을 대체하는 태스크 정의
+tasks.register('processJavadocOverview', Copy) {
+	from "src/main/javadoc" // 원본 overview.html 경로
+	into layout.buildDirectory.dir("tmp/javadocOverviewProcessed") // 처리된 파일이 저장될 임시 디렉토리
+	include "overview.html"
+
+	// filter: ReplaceTokens를 사용하여 @REPO_VERSION@ 플레이스홀더를 실제 버전으로 대체
+	filter(org.apache.tools.ant.filters.ReplaceTokens, tokens: [
+			'REPO_VERSION': repoVersion // Gradle에서 설정한 repoVersion 값으로 대체
+	])
+}
+
+// Javadoc 생성 태스크 설정
+javadoc {
+	// overview.html을 처리할 임시 디렉토리를 설정 (artifacts 디렉토리 생성은 gradle이 자동으로 처리)
+	def javadocOverviewProcessedDir = layout.buildDirectory.dir("tmp/javadocOverviewProcessed").get().asFile
+
+	// javadocOverviewProcessedDir이 생성되도록 dependsOn 설정
+	dependsOn tasks.named("processJavadocOverview", Copy)
+
+	// Javadoc의 overview 파일로 처리된 파일을 지정
+	options.overview = new File(javadocOverviewProcessedDir, "overview.html").getAbsolutePath()
+
+	// Javadoc 생성 옵션 (필요에 따라 추가)
+	options.encoding = 'UTF-8'
+	options.docEncoding = 'UTF-8'
+	//options.charset = 'UTF-8'
+}

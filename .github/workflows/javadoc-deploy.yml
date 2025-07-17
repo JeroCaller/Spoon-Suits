@@ -1,0 +1,58 @@
+name: Deploy Javadoc to GitHub Pages
+
+on:
+  workflow_run:
+    workflows: ["Release versioning"]  # 해당 워크플로우 진행 이후 이 워크플로우 실행
+    types:
+      - completed  # 이전 워크플로우의 실행 결과 성공 여부 상관없이.
+    branches:
+      - main
+  workflow_dispatch: # GitHub UI에서 수동으로 워크플로우 실행 가능하도록 추가
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK version
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'gradle'
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Get latest Git tag # <-- 이 부분이 최신 태그를 가져오는 로직
+        id: get_latest_tag
+        run: |
+          # 모든 태그를 fetch하여 가장 최근 태그를 가져옴 (기존 태그가 없을 경우 'untagged'로 설정)
+          git fetch --tags
+          LATEST_TAG=$(git describe --tags --abbrev=0 || echo 'untagged')
+          echo "LATEST_TAG=$LATEST_TAG" >> "$GITHUB_OUTPUT" # 환경 변수로 내보내기
+
+      - name: Build Javadoc for spoon-suits # <-- 이 부분이 Gradle 빌드와 버전 전달 로직
+        # :spoonsuits:javadoc 태스크를 실행하면서, -P 옵션으로 repoVersionFromCi 속성 전달
+        run: ./gradlew :spoonsuits:javadoc -PrepoVersionFromCi=${{ steps.get_latest_tag.outputs.LATEST_TAG }}
+        # Javadoc 결과물은 spoonsuits/build/docs/javadoc 에 생성됨
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload Javadoc artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './spoonsuits/build/docs/javadoc' # spoonsuits 서브프로젝트의 Javadoc 경로
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
