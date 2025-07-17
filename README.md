@@ -207,8 +207,8 @@ Spoon Suits Javadoc page (v1.0.5)
 | CI / CD | |
 |:---:|:---:|
 | Skills | Details |
-| <img src="https://img.shields.io/badge/jitpack-000000?style=for-the-badge&logo=jitpack&logoColor=white"> | 라이브러리 온라인 자동 배포. Javadoc 문서 제공 |
-| <img src="https://img.shields.io/badge/github actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white"> | Github Tag & Release 및 버전 번호 부여 자동화 |
+| <img src="https://img.shields.io/badge/jitpack-000000?style=for-the-badge&logo=jitpack&logoColor=white"> | <ul><li>라이브러리 온라인 자동 배포.</li><li>Javadoc 문서 제공</li></ul> |
+| <img src="https://img.shields.io/badge/github actions-2088FF?style=for-the-badge&logo=githubactions&logoColor=white"> | <ul><li>Github Tag & Release 및 버전 번호 부여 자동화.</li><li>Github Pages를 통한 Javadoc 온라인 배포를 위한 페이지 자동 생성 및 버전 명시 자동화.</li></ul> |
 
 ## 개발 일지 - Development log
 
