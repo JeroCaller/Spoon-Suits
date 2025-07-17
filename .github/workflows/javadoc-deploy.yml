@@ -21,6 +21,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # 모든 커밋 이력을 가져온다. 기본값은 1로, 가장 최신 커밋만 가져옴.
 
       - name: Set up JDK version
         uses: actions/setup-java@v4
