@@ -1,10 +1,10 @@
 package com.jerocaller.libs.spoonsuits.web.jwt;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 import lombok.ToString;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import java.time.Duration;
 
@@ -42,9 +42,7 @@ import java.time.Duration;
  *         사용할 클래스.
  *     </li>
  *     <li>
- *         기존에 알려진 생성자 바인딩 방식이 적용되지 않아
- *         setter 기반 바인딩으로 구현하였음.
- *         설정값들의 불변성을 유지해야하는 작업에서는 주의 요망.
+ *         생성자 바인딩 방식으로 구현하여 설정값들의 불변성 유지 가능.
  *     </li>
  *     <li>
  *         application.yml의 expiry 값 형태는
@@ -61,44 +59,53 @@ import java.time.Duration;
  * </a>
  */
 @Getter
-@Setter
 @ToString
-@Component
 @ConfigurationProperties(prefix = "jwt")
+@AllArgsConstructor
 public class JwtProperties {
 
-    private String issuer;
-    private String secretKey;
-    private Token token;
+    private final String issuer;
+    private final String secretKey;
+    private final Token token;
 
     @Getter
-    @Setter
+    @AllArgsConstructor
     @ToString
     public static class Token {
 
-        private Access access;
-        private Refresh refresh;
+        private final Access access;
+        private final Refresh refresh;
 
         @Getter
-        @Setter
         @ToString
         public static class Access {
 
-            private Duration expiry = Duration.ofDays(1);
-            private String cookieName = "ACCESS-TOKEN";
+            private final Duration expiry;
+            private final String cookieName;
 
+            public Access(
+                @DefaultValue("PT24H") Duration expiry,
+                @DefaultValue("ACCESS-TOKEN") String cookieName
+            ) {
+                this.expiry = expiry;
+                this.cookieName = cookieName;
+            }
         }
 
         @Getter
-        @Setter
         @ToString
         public static class Refresh {
 
-            private Duration expiry = Duration.ofDays(7);
-            private String cookieName = "REFRESH-TOKEN";
+            private final Duration expiry;
+            private final String cookieName;
 
+            public Refresh(
+                @DefaultValue("PT168H") Duration expiry,
+                @DefaultValue("REFRESH-TOKEN") String cookieName
+            ) {
+                this.expiry = expiry;
+                this.cookieName = cookieName;
+            }
         }
-
     }
-
 }
