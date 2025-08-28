@@ -50,7 +50,7 @@ dependencies {
 	// http://localhost:8080/swagger-ui/index.html
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.3'
 
-	implementation 'com.jerocaller.libs.spoonsuits:spoonsuits:0.1.1'
+	implementation 'com.jerocaller.libs.spoonsuits:spoonsuits:1.0.0'
 
 	// 웹 브라우저 환경에서의 자동화 테스트를 위한 프레임워크
 	// https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java

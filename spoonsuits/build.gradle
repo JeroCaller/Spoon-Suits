@@ -14,6 +14,12 @@ java {
 	}
 }
 
+// application.yml과 같은 환경 설정 파일 내 프로퍼티들과 자바 클래스 간 생성자 바인딩을 위해서는
+// `-parameters` 라는 옵션을 넣고 컴파일해야 한다.
+tasks.withType(JavaCompile) {
+	options.compilerArgs += '-parameters'
+}
+
 configurations {
 	compileOnly {
 		extendsFrom annotationProcessor
