@@ -1,2 +1,13 @@
-// 라이브러리 폴더만 배포하기 위한 설정.
+rootProject.name = 'spoonsuits-root'
 include 'spoonsuits'
+
+if (hasProperty('enableLocalTest') && (enableLocalTest as String).toBoolean()) {
+    println("로컬 테스트 폴더가 포함됩니다. jacoco가 실행될 수 있습니다.")
+
+    include 'spoonsuits-local-test'
+} else {
+    println("로컬 테스트 폴더는 포함되지 않습니다.")
+}
+
+// TODO - selenium 기반 테스트도 터미널 창에서도 실행될 수 있도록 설정하기.
+// TODO - github actions에서 jacoco 실행하도록 한 뒤 커버리지 수치를 배지로 표현할 수 있도록 하기.
