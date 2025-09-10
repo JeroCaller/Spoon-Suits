@@ -56,7 +56,10 @@ dependencies {
 
 	// 웹 브라우저 환경에서의 자동화 테스트를 위한 프레임워크
 	// https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
-	implementation 'org.seleniumhq.selenium:selenium-java:4.30.0'
+	testImplementation 'org.seleniumhq.selenium:selenium-java:4.30.0'
+
+	// 시스템에 설정된 크롬 브라우저 버전과 셀레니움 라이브러리 버전 간 호환을 위함.
+	testImplementation 'org.seleniumhq.selenium:selenium-devtools-v139:4.35.0'
 }
 
 tasks.named('test') {

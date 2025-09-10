@@ -1,5 +1,6 @@
 package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.controller.cookie;
 
+import com.jerocaller.libs.spoonsuits.web.cookie.CookieConfigurer;
 import com.jerocaller.libs.spoonsuits.web.cookie.CookieUtils;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.config.TestCookieConfigurer;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.config.TestSecurityDisableConfig;
@@ -10,7 +11,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.Primary;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -24,6 +28,16 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ContextConfiguration(classes = {TestSecurityDisableConfig.class})
 @Slf4j
 class CookieControllerWithCustomCookieConfigurerTest {
+
+    @TestConfiguration
+    static class CustomConfig {
+
+        @Bean
+        @Primary
+        public CookieConfigurer cookieConfigurer() {
+            return new TestCookieConfigurer();
+        }
+    }
 
     @Autowired
     private MockMvc mockMvc;

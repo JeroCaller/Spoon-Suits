@@ -1,5 +1,6 @@
 package com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.selenium.test;
 
+import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.config.SeleniumOptionConfigUtils;
 import com.jerocaller.test.spoonsuits_local_test.spoonsuits_local_test.service.CookieService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
@@ -25,21 +26,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * <p>
- * 참고사항)<br/>
- * 셀레니움을 이용한 테스트는 실제 웹 브라우저를 띄워 테스트를 하는 방식이다.
- * 이 때 테스트 대상 URL이 실제로 서비스하는 상태여야 한다.
- * 여기서는 메인 패키지에서 만든 웹 앱을 대상으로 테스트할 것이다.
- * 웹 앱은 로컬에서 돌리면 http://localhost:8080으로 기본 실행될 것이다.
- * 셀레니움을 이용한 테스트에서 해당 도메인을 호출할 수 있으려면 셀레니움 테스트에서
- * 실행될 포트번호는 8080과 달라야 한다.
- * 즉, 포트번호 8080은 메인 패키지의 웹 앱용 서버 용도로 사용하고,
- * 여기, 즉 셀레니엄을 이용한 테스트에서는 다른 포트 번호로 사용해야한다.
- * 서버 측의 포트 번호 8080과 겹치는 것을 막기 위해 RANDOM_PORT를 사용한다.
+ *     참고사항)
  * </p>
  * <p>
- * 테스트를 하려면 먼저 매인 애플리케이션을 http://localhost:8080으로 실행한 뒤에
- * 이 테스트 클래스를 실행한다.
+ *     셀레니움을 이용한 테스트는 실제 웹 브라우저를 띄워 테스트를 하는 방식이다.
+ *     이 때 테스트 대상 URL이 실제로 서비스하는 상태여야 한다.
+ *     이 테스트 클래스에서는 src/main/java에 정의된 spring context를 가져온 후, 테스트용 앱을
+ *     실행시켜 여기에 HTTP 요청 및 응답 내용을 토대로 테스트한다.
+ *     여기서는 혹시라도 같은 포트를 사용하는 다른 프로그램과의 충돌을 회피하기 위해
+ *     RANDOM_PORT 상수를 사용하여 테스트 앱에 포트 번호를 에러 없이 부여하도록 한다.
+ *     이 방식의 테스트에서는 별도로 src/main/java에 있는 앱을 실행시킬 필요가 전혀 없다.
  * </p>
+ *
  * <p>
  *     크롬 브라우저를 기준으로 테스트한다.
  * </p>
@@ -51,22 +49,14 @@ class CookieControllerOnBrowserTest {
     private WebDriver webDriver;
 
     @LocalServerPort
-    private int port;
+    private int port;  // RANDOM_PORT에 의해 랜덤으로 부여된 포트 번호
 
     @Autowired
     private CookieService cookieService;
 
-    private final String requestDomainUrl = "http://localhost:8080/test/cookie";
-    private final String requestMockCookiesCreationUrl = UriComponentsBuilder
-        .fromUriString(requestDomainUrl)
-        .path("/many")
-        .build()
-        .toUriString();
-    private final String requestDeleteCookiesUrl = UriComponentsBuilder
-        .fromUriString(requestDomainUrl)
-        .path("/selenium/delete")
-        .build()
-        .toUriString();
+    private String requestDomainUrl;
+    private String requestMockCookiesCreationUrl;
+    private String requestDeleteCookiesUrl;
 
     private final List<String> expectedMockCookieNames = Arrays.asList(
         "TEST-COOKIE-1",
@@ -76,8 +66,20 @@ class CookieControllerOnBrowserTest {
 
     @BeforeEach
     void setUp() {
-        webDriver = new ChromeDriver();
+        webDriver = new ChromeDriver(SeleniumOptionConfigUtils.getChromeOption());
+        requestDomainUrl = String.format("http://127.0.0.1:%d/test/cookie", port);
+        requestMockCookiesCreationUrl = UriComponentsBuilder
+            .fromUriString(requestDomainUrl)
+            .path("/many")
+            .build()
+            .toUriString();
+        requestDeleteCookiesUrl = UriComponentsBuilder
+            .fromUriString(requestDomainUrl)
+            .path("/selenium/delete")
+            .build()
+            .toUriString();
 
+        log.info("테스트용 HTTP 요청 URL: {}", requestDomainUrl);
         log.info("테스트용 다중 쿠키 생성 URL: {}", requestMockCookiesCreationUrl);
         log.info("쿠키 삭제 URL: {}", requestDeleteCookiesUrl);
     }
