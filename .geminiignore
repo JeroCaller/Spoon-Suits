@@ -1,0 +1,3 @@
+!.gemini
+!gradle.properties
+!spoonsuits-local-test/build/reports/jacoco/test/html

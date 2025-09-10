@@ -2,6 +2,7 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.4.4'
 	id 'io.spring.dependency-management' version '1.1.7'
+	id 'jacoco'
 }
 
 group = 'com.jerocaller.test.spoonsuits-local-test'
@@ -50,7 +51,8 @@ dependencies {
 	// http://localhost:8080/swagger-ui/index.html
 	implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.3'
 
-	implementation 'com.jerocaller.libs.spoonsuits:spoonsuits:1.0.0'
+	//implementation 'com.jerocaller.libs.spoonsuits:spoonsuits:1.0.0'
+	implementation project(':spoonsuits')
 
 	// 웹 브라우저 환경에서의 자동화 테스트를 위한 프레임워크
 	// https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java
@@ -59,4 +61,29 @@ dependencies {
 
 tasks.named('test') {
 	useJUnitPlatform()
+
+	finalizedBy 'jacocoTestReport'
+}
+
+tasks.named('jacocoTestReport') {
+	dependsOn tasks.named('test')
+
+	reports {
+		xml.required = true // Codecov 같은 외부 서비스를 위해
+		html.required = true  // 시각적으로 편하게 보기 위함.
+	}
+
+	def spoonsuitsProject = project(':spoonsuits')
+
+	// 커버리지 결과에 spoonsuits-local-test/src/main/java가 아닌
+	// spoonsuits 라이브러리 내 작성한 코드들이 대상이 되어 결과에 나오도록 설정.
+	sourceDirectories.setFrom(files())
+	classDirectories.setFrom(files())
+
+	// 커버리지 측정 대상을 'spoonsuits' 라이브러리로 지정
+	sourceDirectories.setFrom(files(spoonsuitsProject.sourceSets.main.allSource.srcDirs))
+	classDirectories.from(spoonsuitsProject.sourceSets.main.output.classesDirs)
+
+	// 실행 데이터는 현재 프로젝트(spoonsuits-local-test)의 테스트 결과를 사용
+	executionData.from = files("${buildDir}/jacoco/test.exec")
 }
