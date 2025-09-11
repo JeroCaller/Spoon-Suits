@@ -178,6 +178,7 @@ Spoon Suits Javadoc page (v1.0.5)
 | <img src="https://img.shields.io/badge/junit5-25A162?style=for-the-badge&logo=junit5&logoColor=white"> |
 | <img src="https://img.shields.io/badge/selenium-43B02A?style=for-the-badge&logo=selenium&logoColor=white"> |
 | <img src="https://img.shields.io/badge/db-%23121011?style=for-the-badge"><img src="https://img.shields.io/badge/mariadb-003545?style=for-the-badge&logo=mariadb&logoColor=white"> |
+| <img src="https://img.shields.io/badge/jacoco-eee4cc?style=for-the-badge"> |
   </td>
   <td>
 
