@@ -11,6 +11,8 @@ on:
 
 jobs:
   build-and-deploy:
+    # 이전 워크플로우의 작업이 성공했을 때만 실행시킨다.
+    if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
 
     permissions:
