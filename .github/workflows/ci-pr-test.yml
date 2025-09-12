@@ -1,0 +1,61 @@
+name: CI Test on Pull Request
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+  pull-requests: write # PR에 댓글을 작성하기 위해 필요합니다.
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. 소스 코드 체크아웃
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. JDK 21 설치
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      # 3. Gradle 캐시 설정 (빌드 속도 향상)
+      - name: Setup Gradle
+        uses: actions/setup-gradle@v3
+
+      # 4. gradlew 실행 권한 부여
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      # 5. Gradle 테스트 및 Jacoco 리포트 생성
+      # spoonsuits-local-test의 test를 실행합니다. build.gradle 설정에 따라 Jacoco 리포트가 자동으로 생성됩니다.
+      - name: Test with Gradle
+        run: ./gradlew -PenableLocalTest=true :spoonsuits-local-test:test
+
+      # 6. Jacoco 커버리지 리포트를 PR에 댓글로 게시 (커버리지 강제 조건 없음)
+      - name: Add Jacoco coverage comment to PR
+        uses: madrapps/jacoco-report@v1.6.1
+        with:
+          paths: ${{ github.workspace }}/spoonsuits-local-test/build/reports/jacoco/test/jacocoTestReport.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
+          title: "📊 Code Coverage Report"
+
+      # 7. 테스트 리포트 아티팩트 업로드 (실패 시 상세 분석용)
+      - name: Upload Test Report
+        if: always() # 테스트 성공/실패 여부와 관계없이 항상 업로드
+        uses: actions/upload-artifact@v4
+        with:
+          name: test-report
+          path: spoonsuits-local-test/build/reports/tests/test/
+
+      # 8. Jacoco 커버리지 리포트(HTML) 아티팩트 업로드 (상세 분석용)
+      - name: Upload JaCoCo Coverage Report
+        if: always() # 테스트 성공/실패 여부와 관계없이 항상 업로드
+        uses: actions/upload-artifact@v4
+        with:
+          name: jacoco-coverage-report
+          path: spoonsuits-local-test/build/reports/jacoco/test/html/
