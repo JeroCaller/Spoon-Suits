@@ -11,6 +11,9 @@ on:
 
 jobs:
   build-and-deploy:
+    # 이전 워크플로우의 작업이 성공했을 때만 실행시킨다.
+    # types에서 이를 처리할 수 없어 여기서 대신 처리.
+    if: github.event.workflow_run.conclusion == 'success'
     runs-on: ubuntu-latest
 
     permissions:
@@ -36,8 +39,8 @@ jobs:
 
       - name: Get latest Git tag # <-- 이 부분이 최신 태그를 가져오는 로직
         id: get_latest_tag
+        # 모든 태그를 fetch하여 가장 최근 태그를 가져옴 (기존 태그가 없을 경우 'untagged'로 설정)
         run: |
-          # 모든 태그를 fetch하여 가장 최근 태그를 가져옴 (기존 태그가 없을 경우 'untagged'로 설정)
           git fetch --tags
           LATEST_TAG=$(git describe --tags --abbrev=0 || echo 'untagged')
           echo "LATEST_TAG=$LATEST_TAG" >> "$GITHUB_OUTPUT" # 환경 변수로 내보내기
