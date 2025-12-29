@@ -1,0 +1,67 @@
+name: ci-test
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+      pull-requests: write
+
+    # DB 환경 테스트를 위한 MariaDB 환경 설정
+    services:
+      mariadb:
+        image: mariadb:11.4
+        env:
+          MARIADB_DATABASE: test_spoonsuits
+          MARIADB_ROOT_PASSWORD: ${{ secrets.DB_ROOT_PASSWORD }}
+          MARIADB_USER: ${{ secrets.DB_USERNAME }}
+          MARIADB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+        ports:
+          3308:3308
+        options: >-
+          --health-cmd "mysqladmin ping -h 127.0.0.1 -u${{ secrets.DB_USERNAME }} -p${{ secrets.DB_PASSWORD }}"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 3
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK version
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'gradle'
+
+      - name: create application.yml
+        # ehco ... > ... : 값을 오른쪽에 명시된 파일 내부로 복사
+        run: |
+          cd ./spoonsuits-local-test/src/main/resources
+          touch ./application.yml
+          touch ./application-secret.yml
+          echo "${{ secrets.APPLICATION }}" > ./application.yml
+          echo "${{ secrets.APPLICATION_SECRET }}" > ./application-secret.yml
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      # Gradle로 build 시, build.gradle에 설정한 내용에 의해
+      # 'test', 'jacocoTestReport', 'jacocoTestCoverageVerification' task들이 순차적으로 자동 실행된다.
+      - name: Build with Gradle to get a result of test
+        run: ./spoonsuits-local-test/gradlew build
+
+      # 테스트 결과를 PR comment로 출력
+      - name: Publish test results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        # 이전 task에서 테스트 실패 시 task도 실패하는데, 이 task의 성공 여부에 상관없이 무조건 이 작업을 실행.
+        if: always()
+        with:
+          files: |
+            spoonsuits-local-test/build/test-results/test/TEST-*.xml
