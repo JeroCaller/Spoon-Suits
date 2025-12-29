@@ -20,14 +20,3 @@ spring:
       # 항상 SQL DB 초기화되게끔 하고자 한다면 spring.sql.init.mode=always로 설정.
       # 반대로 항상 초기화를 끄고자 한다면 never로 설정.
       mode: always
-
-jwt:
-  issuer: kimquel@good
-  secretKey: this-is-for-jwt-secret-key-which-has-very-long-length
-  token:
-    access:
-      expiry: PT5M
-      cookie-name: access-token
-    refresh:
-      expiry: PT10M
-      cookie-name: refresh-token
