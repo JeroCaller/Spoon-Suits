@@ -1,22 +1,3 @@
--- 테스트용 DB 및 데이터
-
--- test_festival 데이터베이스 구조 내보내기
-CREATE DATABASE IF NOT EXISTS `test_festival`;
-USE `test_festival`;
-
--- 테이블 test_festival.fake_festival 구조 내보내기
-CREATE TABLE IF NOT EXISTS `fake_festival` (
-  `ID` int(11) NOT NULL,
-  `TITLE` varchar(100) NOT NULL,
-  `ORIGIN` varchar(100) NOT NULL,
-  `CONTENT` varchar(1000) NOT NULL,
-  `IMAGE` varchar(50) NOT NULL,
-  `STARTDATE` date NOT NULL,
-  `ENDDATE` date NOT NULL,
-  PRIMARY KEY (`ID`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
--- 테이블 데이터 test_festival.fake_festival:~50 rows (대략적) 내보내기
 INSERT INTO `fake_festival` (`ID`, `TITLE`, `ORIGIN`, `CONTENT`, `IMAGE`, `STARTDATE`, `ENDDATE`) VALUES
 	(1, 'Move Over, Darling', 'https://pagesperso-orange.fr/eleifend/quam/a.json', 'Proin interdum mauris non ligula pellentesque ultrices. Phasellus id sapien in sapien iaculis congue. Vivamus metus arcu, adipiscing molestie, hendrerit at, vulputate vitae, nisl.', 'http://dummyimage.com/133x102.png/dddddd/000000', '2024-07-07', '2024-07-13'),
 	(2, 'A Thousand Times Goodnight', 'https://google.pl/sollicitudin/vitae/consectetuer/eget/rutrum/at/lorem.jsp', 'Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla. Sed vel enim sit amet nunc viverra dapibus. Nulla suscipit ligula in lacus.', 'http://dummyimage.com/152x233.png/ff4444/ffffff', '2024-11-07', '2024-11-13'),
