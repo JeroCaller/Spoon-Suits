@@ -22,10 +22,10 @@ jobs:
           MARIADB_USER: ${{ secrets.DB_USERNAME }}
           MARIADB_PASSWORD: ${{ secrets.DB_PASSWORD }}
         ports:
-          # DB : docker host
-          - 3308:3308
+          # runner : docker container (MariaDB)
+          - 3306:3306
         options: >-
-          --health-cmd "mysqladmin ping -h 127.0.0.1 -u${{ secrets.DB_USERNAME }} -p${{ secrets.DB_PASSWORD }}"
+          --health-cmd "mysqladmin ping -h 127.0.0.1 -u$MARIADB_USER -p$MARIADB_PASSWORD"
           --health-interval 10s
           --health-timeout 5s
           --health-retries 3
