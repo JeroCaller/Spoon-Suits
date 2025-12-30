@@ -52,7 +52,7 @@ jobs:
           echo "${{ secrets.APPLICATION_SECRET }}" > ./application-secret.yml
 
       - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
+        run: chmod +x ./spoonsuits-local-test/gradlew
 
       # Gradle로 build 시, build.gradle에 설정한 내용에 의해
       # 'test', 'jacocoTestReport', 'jacocoTestCoverageVerification' task들이 순차적으로 자동 실행된다.
