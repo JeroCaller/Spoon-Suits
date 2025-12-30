@@ -57,7 +57,7 @@ jobs:
       # Gradle로 build 시, build.gradle에 설정한 내용에 의해
       # 'test', 'jacocoTestReport', 'jacocoTestCoverageVerification' task들이 순차적으로 자동 실행된다.
       - name: Build with Gradle to get a result of test
-        run: ./spoonsuits-local-test/gradlew build
+        run: ./spoonsuits-local-test/gradlew build -PenableLocalTest=true
 
       # 테스트 결과를 PR comment로 출력
       - name: Publish test results
