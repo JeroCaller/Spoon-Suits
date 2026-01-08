@@ -19,7 +19,7 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           default_bump: false
-          custom_release_rules: 'BREAKING CHANGE:major:❗ BREAKING CHANGES,feat:minor:✨ Features,fix:patch:🐛 Bug Fixes,docs:patch:📝 Documentation,ci:patch:🤖 CI,perf:patch:⚡️ Performance Enhancement'
+          custom_release_rules: 'BREAKING CHANGE:major:❗ BREAKING CHANGES,feat:minor:✨ Features,fix:patch:🐛 Bug Fixes,docs:patch:📝 Documentation,perf:patch:⚡️ Performance Enhancement'
       - name: Create a GitHub release
         uses: ncipollo/release-action@v1
         with:
