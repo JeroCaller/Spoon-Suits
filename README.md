@@ -9,6 +9,9 @@
 |:---:|
 | [![](https://jitpack.io/v/JeroCaller/Spoon-Suits.svg)](https://jitpack.io/#JeroCaller/Spoon-Suits) |
 
+[![ci-test](https://github.com/JeroCaller/Spoon-Suits/actions/workflows/ci-test.yml/badge.svg)](https://github.com/JeroCaller/Spoon-Suits/actions/workflows/ci-test.yml)
+[![codecov](https://codecov.io/gh/JeroCaller/Spoon-Suits/graph/badge.svg?token=UECB25DP0R)](https://codecov.io/gh/JeroCaller/Spoon-Suits)
+
 ## 주요 기능 - Main features
 * Cookie
   * cookie 추가, 삭제 및 Java 객체 직렬화, 역직렬화하여 쿠키에 추가 및 추출 기능
